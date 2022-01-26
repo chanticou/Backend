@@ -1,0 +1,30 @@
+[
+   {
+      "id": 1,
+      "name": "Santiago Cunese de la fuente",
+      "speciality": "Podologo",
+      "available": true,
+      "telephone": 156789226
+   },
+   {
+      "id": "",
+      "name": "Michi Francisconi",
+      "speciality": "Partera",
+      "available": true,
+      "telephone": 16492789
+   },
+   {
+      "id": 4,
+      "name": "Carolina Aparicio",
+      "speciality": "Partera",
+      "available": true,
+      "telephone": 16492789
+   },
+   {
+      "id": 5,
+      "name": "luki",
+      "speciality": "Partera",
+      "available": true,
+      "telephone": 16492789
+   }
+]
