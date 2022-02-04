@@ -15,7 +15,7 @@ let user={
     telephone:16492789
 }
 
- newUser.createUser(user).then(result=>console.log(result))
+//  newUser.randomUser().then(result=>console.log(result))
 
 // newUser.findAllUsers().then(result=>console.log(result))
 
@@ -25,5 +25,7 @@ let user={
 
 // newUser.deleteUser(5).then(result=>console.log(result)) 
 
+// newUser.createUser(user).then(result=>console.log(result)) 
 
+newUser.createTXT().then(result=>console.log(result)) 
 

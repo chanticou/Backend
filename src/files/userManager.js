@@ -25,7 +25,9 @@ const fs = require('fs')
 //     available:true,
 //     telephone:1575892546
 // }]
-const pathUsers='./files/users.json'
+const pathUsers='./users.json'
+
+
 
 
 //EL USERMANAGER VA A TENER TODOS LOS METODOS PARA GETIONAR USUARIOS  Y YO LOS VOY A LLAMAR DESDE EL IDNEX
@@ -45,7 +47,7 @@ class UserManager{
                 user.id=id
                 users.push(user)
                 await fs.promises.writeFile(pathUsers, JSON.stringify(users, null, 3))
-                return{status:'success', message:'New user created'}
+                return{status:'success', message:'New user created',newUser:users}
                    
             }else{
                 //Si no existen le voy a asignar el id N1 al primero usuario
@@ -55,7 +57,9 @@ class UserManager{
             }
 
         }catch(error){
+             console.log(error)
             return {status:'error', message:'error'}
+            
         }
     }
 
@@ -66,7 +70,7 @@ class UserManager{
 
             return{
                 message:'Succes',
-                finfUsers:users
+                findUsers:users
             }
         }
     }
@@ -121,12 +125,48 @@ class UserManager{
             return {
                 status:'succes',
                 message:'Delete User'
-            }
+            }            
+        }
+    }
+
+
     
+
+    randomUser= async()=>{
+        let resultRandomUser;
+        if(fs.existsSync(pathUsers)){
+            let data= await fs.promises.readFile(pathUsers, 'utf-8', null, 3)
+            let users= JSON.parse(data)
+          
+            let mathRandom = Math.floor(Math.random()*(users.length))
+            // console.log(mathRandom)
+
+            resultRandomUser=users[mathRandom-1]
+
+            // console.log(resultRandomUser)
+            // await fs.promises.writeFile(pathUsers, JSON.stringify(resultRandomUser))
+
             
         }
+        return resultRandomUser;
+    }   
+   
 
+    createTXT= async ()=>{
+        if(fs.existsSync(pathUsers)){
+            let data= await fs.promises.readFile(pathUsers, 'utf-8', null, 3)
+            let users= JSON.parse(data)
+        let createTxt = await fs.promises.writeFile('productos.txt', JSON.stringify(users, null, 3) )
+        console.log(createTxt)
+      
+        }
     }
 }
 
 module.exports = UserManager;
+
+
+
+
+
+
